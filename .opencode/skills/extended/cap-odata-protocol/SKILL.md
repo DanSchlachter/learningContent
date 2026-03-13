@@ -75,8 +75,8 @@ cds:
 |---|---|---|
 | `GET` | `READ` | Used for both collection and single-entity reads |
 | `POST` | `CREATE` | Also used to invoke unbound OData actions |
-| `PATCH` | `UPDATE` | If entity not found → triggers `CREATE` |
-| `PUT` | `UPDATE` | If entity not found → triggers `CREATE` |
+| `PATCH` | `UPDATE` | Does **not** create if entity not found by default (`cds.runtime.patch_as_upsert` defaults to `false`) |
+| `PUT` | `UPDATE` | Creates if entity not found by default (`cds.runtime.put_as_upsert` defaults to `true`) |
 | `DELETE` | `DELETE` | |
 
 ---

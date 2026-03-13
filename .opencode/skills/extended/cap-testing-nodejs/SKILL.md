@@ -14,7 +14,7 @@ metadata:
     - mocked authentication in tests
     - chai expect / assert / should
     - chai-subset / chai-as-promised
-    - test.log() capture
+    - cds.test.log() capture
     - Jest vs Mocha
     - best practices (assert data before status)
 ---
@@ -199,6 +199,7 @@ try {
 describe('logging', () => {
   const test = cds.test(__dirname + '/..')
   let log = cds.test.log()          // captures console output in scope
+                                    // auto-clears before each test; releases in afterAll
 
   it('emits a log on read', async () => {
     await GET('/browse/Books')
@@ -207,6 +208,12 @@ describe('logging', () => {
 
   it('log.clear() resets captured output', () => {
     log.clear()
+    expect(log.output).to.equal('')
+  })
+
+  it('log.release() stops capturing', () => {
+    log.release()                   // stop capturing — further output is not recorded
+    console.log('not captured')
     expect(log.output).to.equal('')
   })
 })
@@ -231,6 +238,16 @@ await expect(POST('/browse/Books', {})).to.be.rejectedWith(/readonly/i)
 
 // BAD: exact string match (brittle)
 // await expect(POST(...)).to.be.rejectedWith('Entity is read-only')
+
+// GOOD: reset in-memory DB state before each test for isolation
+const test = cds.test(__dirname + '/..')
+beforeEach(test.data.reset)
+
+// Alternative: async form if you need other setup steps
+beforeEach(async () => {
+  await test.data.reset()
+  // other setup
+})
 ```
 
 ---

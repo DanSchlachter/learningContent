@@ -63,8 +63,8 @@ cds init bookshop
 # With runtime flag
 cds init bookshop --nodejs
 
-# With features added immediately
-cds init bookshop --add sample,hana,xsuaa,typescript
+# With features added immediately (--nodejs required when adding sample content)
+cds init bookshop --add sample,hana,xsuaa,typescript --nodejs
 
 # Tiny sample (single-file service, great for rapid prototyping)
 cds init bookshop && cd bookshop && cds add tiny-sample
