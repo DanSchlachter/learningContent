@@ -4,7 +4,6 @@ description: >
   SAP CAP i18n text bundles — properties file placement, {i18n>KEY} annotations in
   CDS models, merging algorithm, locale normalization, preserved locales, cds.i18n
   Node.js API for labels and messages, and extension project i18n.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

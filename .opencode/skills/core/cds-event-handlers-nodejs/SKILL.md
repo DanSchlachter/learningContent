@@ -1,14 +1,23 @@
 ---
 name: cds-event-handlers-nodejs
 description: SAP CAP Node.js service event handlers - before/on/after hooks, req object, error handling, transactions, custom actions
-license: MIT
-compatibility: opencode
+compatibility:
+  runtime: [nodejs]
 metadata:
-  topic: SAP CAP
-  runtime: Node.js
+  topics:
+    - before / on / after handler registration
+    - req object (data, user, subject, error, reject)
+    - class-based (cds.ApplicationService) vs function-based handlers
+    - wildcard handler patterns
+    - custom actions and functions
+    - req.before('commit') hook
+    - cds.context and transaction management
+    - cds.connect.to and srv.emit
 ---
 
-## What I do
+# CAP Node.js Event Handlers
+
+## What This Skill Covers
 
 Guide you in implementing CAP Node.js service handlers, covering:
 

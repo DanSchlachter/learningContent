@@ -5,7 +5,6 @@ description: >
   H2 in-memory database setup, application.yaml test profile, MockMvcRequestBuilders,
   status assertions, testcontainers with cds:watch -DtestRun, and Maven archetype
   integration test option.
-license: SAP Sample Code License
 compatibility:
   runtime: [java]
 metadata:

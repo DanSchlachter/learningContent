@@ -1,14 +1,23 @@
 ---
 name: cds-event-handlers-java
 description: SAP CAP Java event handlers - @Before/@On/@After, EventHandler, EventContext, CqnService CRUD events, custom actions
-license: MIT
-compatibility: opencode
+compatibility:
+  runtime: [java]
 metadata:
-  topic: SAP CAP
-  runtime: Java
+  topics:
+    - "@Before / @On / @After handler method annotations"
+    - EventHandler interface and @ServiceName binding
+    - EventContext and generated typed event contexts
+    - CqnService CRUD event constants
+    - custom actions and functions with return values
+    - context.setResult() / context.setCompleted() / context.proceed()
+    - injecting and running CQN queries inside handlers
+    - ServiceException for business errors
 ---
 
-## What I do
+# CAP Java Event Handlers
+
+## What This Skill Covers
 
 Guide you in implementing CAP Java service event handlers, covering:
 

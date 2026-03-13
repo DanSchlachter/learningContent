@@ -1,14 +1,25 @@
 ---
 name: cap-fiori-annotations
 description: SAP CAP Fiori Elements annotations - LineItem, SelectionFields, FieldGroup, Facets, ObjectPage, draft support, value helps
-license: MIT
-compatibility: opencode
+compatibility:
+  runtime: [nodejs, java]
 metadata:
-  topic: SAP CAP
-  runtime: Node.js, Java
+  topics:
+    - UI.LineItem (list page columns)
+    - UI.SelectionFields (filter bar)
+    - UI.FieldGroup and UI.Facets (Object Page sections)
+    - UI.HeaderInfo (Object Page header)
+    - "@odata.draft.enabled"
+    - "@cds.odata.valuelist"
+    - "@Common.Text / @Common.TextArrangement"
+    - "@UI.Hidden"
+    - "@title / @description"
+    - annotation file placement
 ---
 
-## What I do
+# CAP Fiori Elements Annotations
+
+## What This Skill Covers
 
 Guide you in writing CDS UI annotations for SAP Fiori Elements applications built on CAP, covering:
 

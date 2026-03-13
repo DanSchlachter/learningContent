@@ -4,7 +4,6 @@ description: >
   SAP CAP Node.js testing with cds.test — installing @cap-js/cds-test, starting a
   test server, HTTP helpers (GET/POST/PATCH/DELETE), mocked auth, chai assertions,
   log capture, best practices, Jest and Mocha compatibility.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs]
 metadata:

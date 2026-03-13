@@ -5,7 +5,6 @@ description: >
   with srv.emit/srv.on in Node.js and MessagingService in Java, broker configuration
   (enterprise-messaging, event-broker, file-based), CloudEvents format, transactional
   outbox, and low-level messaging.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

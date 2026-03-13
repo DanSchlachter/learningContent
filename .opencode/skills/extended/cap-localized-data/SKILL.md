@@ -5,7 +5,6 @@ description: >
   entities and localized views, serving locale-aware reads automatically, accessing
   the user locale in handlers, @cds.localized: false opt-out, initial translation
   data via CSV, and SQLite/H2 localized view config.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

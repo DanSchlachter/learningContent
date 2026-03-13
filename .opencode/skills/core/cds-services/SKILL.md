@@ -1,14 +1,22 @@
 ---
 name: cds-services
 description: SAP CAP service definitions - projections, actions, functions, @readonly, @insertonly, @path, multi-protocol exposure
-license: MIT
-compatibility: opencode
+compatibility:
+  runtime: [nodejs, java]
 metadata:
-  topic: SAP CAP
-  runtime: Node.js, Java
+  topics:
+    - service definitions and entity projections/views
+    - bound and unbound actions and functions
+    - "@readonly / @insertonly"
+    - "@path / @protocol endpoint control"
+    - multi-protocol exposure
+    - auto-exposure of associated entities
+    - service as facade over domain model
 ---
 
-## What I do
+# CDS Services
+
+## What This Skill Covers
 
 Guide you in defining CDS services for SAP CAP applications, covering:
 

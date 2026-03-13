@@ -1,14 +1,24 @@
 ---
 name: cds-data-modeling
 description: CDS domain modeling in SAP CAP - entities, types, aspects, associations, compositions, and reuse from @sap/cds/common
-license: MIT
-compatibility: opencode
+compatibility:
+  runtime: [nodejs, java]
 metadata:
-  topic: SAP CAP
-  runtime: Node.js, Java
+  topics:
+    - entities / elements / built-in types
+    - custom scalar and structured types
+    - aspects and reuse
+    - associations (to-one, to-many) and compositions
+    - namespaces and using imports
+    - "@sap/cds/common (cuid, managed, CodeList, Currency, Country)"
+    - "@title / @description / localized / @readonly / @insertonly"
+    - extend
+    - declarative validation (@mandatory, @assert.range, @assert.format, @assert.unique, @assert.target)
 ---
 
-## What I do
+# CDS Data Modeling
+
+## What This Skill Covers
 
 Guide you in writing correct CDS (Core Data Services) models for SAP CAP applications, covering:
 

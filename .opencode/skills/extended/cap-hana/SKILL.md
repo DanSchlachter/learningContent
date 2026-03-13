@@ -5,7 +5,6 @@ description: >
   cds deploy --to hana, native HANA associations, @cds.persistence.journal migration
   tables, HANA doc comments, cds.sql.native_hana_associations, keeping data on
   undeploy, localized String with @cds.collate.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

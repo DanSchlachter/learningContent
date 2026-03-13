@@ -1,7 +1,6 @@
 ---
 name: cap-extensibility
 description: SAP CAP SaaS extensibility - tenant extensions with cds push/pull, ExtensionDeveloper role, extend keyword, extension project setup
-license: Apache-2.0
 compatibility:
   runtime: ["nodejs", "java"]
 metadata:
@@ -21,7 +20,7 @@ metadata:
 - Extension i18n and annotation overrides
 - Build task type `mtx-extension`
 
-## Rules — Always Follow
+## Rules
 
 1. **Search docs before making any changes.**
    Always run `cds-mcp_search_docs` for extensibility topics before writing or modifying code. Run `cds-mcp_search_model` to inspect existing model or service definitions.

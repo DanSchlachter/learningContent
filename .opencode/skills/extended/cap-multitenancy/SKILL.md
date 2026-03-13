@@ -1,7 +1,6 @@
 ---
 name: cap-multitenancy
 description: SAP CAP multitenancy with MTX sidecar - tenant lifecycle (subscribe/upgrade/unsubscribe), cds.xt services, sidecar setup, Java & Node.js patterns
-license: Apache-2.0
 compatibility:
   runtime: ["nodejs", "java"]
 metadata:
@@ -20,7 +19,7 @@ metadata:
 - Tenant context switching in Java
 - App Router and CF route setup
 
-## Rules — Always Follow
+## Rules
 
 1. **Search docs before making any changes.**
    Always run `cds-mcp_search_docs` for multitenancy / MTX topics before writing or modifying code. Run `cds-mcp_search_model` to inspect existing model definitions.

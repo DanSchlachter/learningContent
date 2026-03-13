@@ -1,7 +1,6 @@
 ---
 name: cap-project-setup
 description: SAP CAP project scaffolding - cds init, cds add facets, Node.js vs Java, TypeScript, local dev with cds watch / mvn spring-boot:run, project layout
-license: Apache-2.0
 compatibility:
   runtime: ["nodejs", "java"]
 metadata:
@@ -20,7 +19,7 @@ metadata:
 - Java Maven archetype and key `pom.xml` dependencies
 - Key `.cdsrc.json` / `package.json` settings to know
 
-## Rules — Always Follow
+## Rules
 
 1. **Search docs before making any changes.**
    Always run `cds-mcp_search_docs` for project setup / CLI topics before writing commands or config. Run `cds-mcp_search_model` to inspect existing model definitions.

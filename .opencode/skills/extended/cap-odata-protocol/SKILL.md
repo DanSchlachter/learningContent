@@ -5,7 +5,6 @@ description: >
   options ($select, $filter, $expand, $orderby, $top, $skip, $count), $batch,
   server-driven pagination ($skiptoken), calling actions and functions, parameter aliases,
   and configuring limits and expand depth.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

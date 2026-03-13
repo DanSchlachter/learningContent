@@ -5,7 +5,6 @@ description: >
   projecting external entities in CDS, Node.js credentials/destination configuration,
   Java application.yaml with BTP Destination Service, http.suffix for URL path,
   Cloud SDK HttpClient, and programmatic destination registration.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

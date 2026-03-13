@@ -1,14 +1,21 @@
 ---
 name: cap-authorization
 description: SAP CAP authorization - @requires, @restrict, instance-based filters, pseudo-roles, $user, mocked users for testing
-license: MIT
-compatibility: opencode
+compatibility:
+  runtime: [nodejs, java]
 metadata:
-  topic: SAP CAP
-  runtime: Node.js, Java
+  topics:
+    - "@requires for role guards"
+    - "@restrict with grant/to/where"
+    - instance-based authorization ($user, $user.<attr>)
+    - pseudo-roles (authenticated-user, system-user, internal-user, any)
+    - restriction inheritance and override
+    - mocked users for local development
 ---
 
-## What I do
+# CAP Authorization
+
+## What This Skill Covers
 
 Guide you in securing SAP CAP services and entities with declarative authorization, covering:
 

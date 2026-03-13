@@ -5,7 +5,6 @@ description: >
   in both Node.js (cds.ql) and Java (CqnService builders). Covers fluent API, tagged
   template literals, parameterized execution, batch execution, deep updates, and
   cds.ql.clone() for safe query mutation.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:

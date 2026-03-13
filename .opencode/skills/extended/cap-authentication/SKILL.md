@@ -5,7 +5,6 @@ description: >
   cds add xsuaa, xs-security.json, Node.js package.json setup, Java application.yaml
   mock users, @WithMockUser testing, XsuaaUserInfo JWT token access, IAS + XSUAA
   fallback, and hybrid testing.
-license: SAP Sample Code License
 compatibility:
   runtime: [nodejs, java]
 metadata:
