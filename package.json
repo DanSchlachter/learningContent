@@ -23,9 +23,18 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testMatch": ["**/test/**/*.test.js"]
+    "testMatch": ["**/test/**/*.test.js"],
+    "setupFiles": ["./test/setup.js"]
   },
   "cds": {
+    "[test]": {
+      "requires": {
+        "db": {
+          "kind": "sqlite",
+          "credentials": { "url": ":memory:" }
+        }
+      }
+    },
     "requires": {
       "db": {
         "kind": "sqlite"

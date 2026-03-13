@@ -1,7 +1,10 @@
 'use strict';
 
 const cds = require('@sap/cds');
-const { GET, POST } = cds.test(__dirname + '/..');
+const app = cds.test(__dirname + '/..');
+const { GET, POST } = app;
+
+beforeAll(app.data.reset);
 
 // Known seed data IDs
 const ITEM_PUBLISHED = '30000000-0000-0000-0000-000000000001'; // "Getting Started with SAP CAP" - published
