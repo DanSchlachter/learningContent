@@ -1,0 +1,29 @@
+# SAP CAP
+gen/
+*.db
+*.sqlite
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.*
+.cdsrc-private.json
+
+# Build output
+dist/
+.build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
