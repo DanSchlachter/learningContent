@@ -99,7 +99,7 @@
         "ContentItemsList": {
           "type": "Component",
           "id": "ContentItemsList",
-          "name": "sap.fe.templates.ListReport",
+          "name": "sap.fe.templates.ListReport.Component",
           "options": {
             "settings": {
               "entitySet": "ContentItems",
@@ -114,7 +114,7 @@
         "ContentItemsObjectPage": {
           "type": "Component",
           "id": "ContentItemsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
+          "name": "sap.fe.templates.ObjectPage.Component",
           "options": {
             "settings": {
               "entitySet": "ContentItems",
@@ -126,7 +126,7 @@
         "LearningPathsList": {
           "type": "Component",
           "id": "LearningPathsList",
-          "name": "sap.fe.templates.ListReport",
+          "name": "sap.fe.templates.ListReport.Component",
           "options": {
             "settings": {
               "entitySet": "LearningPaths",
@@ -138,7 +138,7 @@
         "LearningPathsObjectPage": {
           "type": "Component",
           "id": "LearningPathsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
+          "name": "sap.fe.templates.ObjectPage.Component",
           "options": {
             "settings": {
               "entitySet": "LearningPaths"
@@ -148,7 +148,7 @@
         "CategoriesList": {
           "type": "Component",
           "id": "CategoriesList",
-          "name": "sap.fe.templates.ListReport",
+          "name": "sap.fe.templates.ListReport.Component",
           "options": {
             "settings": {
               "entitySet": "Categories",
@@ -160,7 +160,7 @@
         "TagsList": {
           "type": "Component",
           "id": "TagsList",
-          "name": "sap.fe.templates.ListReport",
+          "name": "sap.fe.templates.ListReport.Component",
           "options": {
             "settings": {
               "entitySet": "Tags",
@@ -172,7 +172,7 @@
         "AdminUsersList": {
           "type": "Component",
           "id": "AdminUsersList",
-          "name": "sap.fe.templates.ListReport",
+          "name": "sap.fe.templates.ListReport.Component",
           "options": {
             "settings": {
               "entitySet": "AdminUsers",
