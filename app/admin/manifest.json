@@ -1,0 +1,175 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "learning.content.admin",
+    "type": "application",
+    "title": "Learning Content — Admin",
+    "description": "Manage learning content, taxonomy, and learning paths",
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/admin/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "fullWidth": false
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ContentItemsList",
+          "target": "ContentItemsList"
+        },
+        {
+          "pattern": "ContentItems({key}):?query:",
+          "name": "ContentItemsObjectPage",
+          "target": "ContentItemsObjectPage"
+        },
+        {
+          "pattern": "ContentItems({key})/sap.fe.templates.ObjectPage::AdminService.ContentItems{?query}",
+          "name": "ContentItemsObjectPage_draft",
+          "target": "ContentItemsObjectPage"
+        },
+        {
+          "pattern": "LearningPaths:?query:",
+          "name": "LearningPathsList",
+          "target": "LearningPathsList"
+        },
+        {
+          "pattern": "LearningPaths({key}):?query:",
+          "name": "LearningPathsObjectPage",
+          "target": "LearningPathsObjectPage"
+        },
+        {
+          "pattern": "Categories:?query:",
+          "name": "CategoriesList",
+          "target": "CategoriesList"
+        },
+        {
+          "pattern": "Tags:?query:",
+          "name": "TagsList",
+          "target": "TagsList"
+        },
+        {
+          "pattern": "AdminUsers:?query:",
+          "name": "AdminUsersList",
+          "target": "AdminUsersList"
+        }
+      ],
+      "targets": {
+        "ContentItemsList": {
+          "type": "Component",
+          "id": "ContentItemsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "ContentItems",
+              "variantManagement": "Page",
+              "initialLoad": true,
+              "navigationSettings": {
+                "displayMode": "IconTabBar"
+              }
+            }
+          }
+        },
+        "ContentItemsObjectPage": {
+          "type": "Component",
+          "id": "ContentItemsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "ContentItems",
+              "editableHeaderContent": false,
+              "navigationSettings": {}
+            }
+          }
+        },
+        "LearningPathsList": {
+          "type": "Component",
+          "id": "LearningPathsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "LearningPaths",
+              "variantManagement": "Page",
+              "initialLoad": true
+            }
+          }
+        },
+        "LearningPathsObjectPage": {
+          "type": "Component",
+          "id": "LearningPathsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "LearningPaths"
+            }
+          }
+        },
+        "CategoriesList": {
+          "type": "Component",
+          "id": "CategoriesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Categories",
+              "variantManagement": "None",
+              "initialLoad": true
+            }
+          }
+        },
+        "TagsList": {
+          "type": "Component",
+          "id": "TagsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Tags",
+              "variantManagement": "None",
+              "initialLoad": true
+            }
+          }
+        },
+        "AdminUsersList": {
+          "type": "Component",
+          "id": "AdminUsersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "AdminUsers",
+              "variantManagement": "None",
+              "initialLoad": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

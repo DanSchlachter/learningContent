@@ -1,0 +1,115 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "learning.content.browse",
+    "type": "application",
+    "title": "Learning Content — Browse",
+    "description": "Browse and discover published learning content",
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/browse/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "fullWidth": false
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ContentItemsList",
+          "target": "ContentItemsList"
+        },
+        {
+          "pattern": "ContentItems({key}):?query:",
+          "name": "ContentItemsObjectPage",
+          "target": "ContentItemsObjectPage"
+        },
+        {
+          "pattern": "LearningPaths:?query:",
+          "name": "LearningPathsList",
+          "target": "LearningPathsList"
+        },
+        {
+          "pattern": "LearningPaths({key}):?query:",
+          "name": "LearningPathsObjectPage",
+          "target": "LearningPathsObjectPage"
+        }
+      ],
+      "targets": {
+        "ContentItemsList": {
+          "type": "Component",
+          "id": "ContentItemsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "ContentItems",
+              "variantManagement": "None",
+              "initialLoad": true
+            }
+          }
+        },
+        "ContentItemsObjectPage": {
+          "type": "Component",
+          "id": "ContentItemsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "ContentItems",
+              "editableHeaderContent": false
+            }
+          }
+        },
+        "LearningPathsList": {
+          "type": "Component",
+          "id": "LearningPathsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "LearningPaths",
+              "variantManagement": "None",
+              "initialLoad": true
+            }
+          }
+        },
+        "LearningPathsObjectPage": {
+          "type": "Component",
+          "id": "LearningPathsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "LearningPaths"
+            }
+          }
+        }
+      }
+    }
+  }
+}
