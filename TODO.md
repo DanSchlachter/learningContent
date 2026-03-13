@@ -95,6 +95,25 @@
   - `changeStatus` returns HTTP 200 with entity body (not 204) since it declares `returns ContentItems`
 - [x] **Commit**: `test: add admin-service tests — 58 tests passing`
 
+## Phase 8: Fiori UI — Serve Apps at localhost:4004
+
+- [x] Add `app/browse/webapp/index.html` + `Component.js` — UI5 bootstrap via `sap/fe/core/AppComponent`
+- [x] Add `app/admin/webapp/index.html` + `Component.js` — UI5 bootstrap via `sap/fe/core/AppComponent`
+- [x] Add `app/index.html` — custom landing page replacing the generic CAP welcome page at `localhost:4004`
+  - Links to `/browse/webapp/index.html` and `/admin/webapp/index.html`
+  - CAP serves any `app/**/*.html` statically; `app/index.html` is the root index
+- [x] **Commit**: `feat: add browse app webapp with UI5 bootstrap index.html and Component.js`
+- [x] **Commit**: `feat: add admin app webapp with UI5 bootstrap index.html and Component.js`
+- [x] **Commit**: `feat: add app/index.html landing page replacing CAP welcome page`
+
+### Key notes
+- `app/index.html` replaces the generic CAP welcome page — confirmed by `node_modules/@sap/cds/app/index.html` footer: "You can replace it with a custom `./app/index.html`"
+- `app/<name>/webapp/index.html` bootstraps UI5 from `https://ui5.sap.com/resources/sap-ui-core.js` (CDN)
+- `data-sap-ui-resourceroots` maps the app namespace (e.g. `learning.content.browse`) to `./` so `Component.js` and `manifest.json` are found
+- `Component.js` extends `sap/fe/core/AppComponent` with `manifest: "json"` — loads `manifest.json` from same directory
+- Browse app: `http://localhost:4004/browse/webapp/index.html` (public, no auth)
+- Admin app: `http://localhost:4004/admin/webapp/index.html` (requires `alice`/`alice` or `bob`/`bob`)
+
 ---
 
 ## How to Run
@@ -104,10 +123,9 @@ npm install
 cds watch
 ```
 
-- **Admin UI**: http://localhost:4004/admin/ (login: alice / alice — role: Admin)
-- **Browse UI**: http://localhost:4004/browse/ (public, no login required)
-- **OData (Admin)**: http://localhost:4004/odata/v4/admin/
-- **OData (Browse)**: http://localhost:4004/odata/v4/browse/
+- **Landing page**: http://localhost:4004 (links to both apps)
+- **Browse UI**: http://localhost:4004/browse/webapp/index.html (public)
+- **Admin UI**: http://localhost:4004/admin/webapp/index.html (login: alice/alice or bob/bob)
 
 ## Mocked Users (development only)
 
