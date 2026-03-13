@@ -2,6 +2,8 @@
 gen/
 *.db
 *.sqlite
+*.sqlite-shm
+*.sqlite-wal
 
 # Node.js
 node_modules/

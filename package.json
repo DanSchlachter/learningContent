@@ -21,10 +21,7 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "database": "db/learning-content.db"
-        }
+        "kind": "sqlite"
       },
       "auth": {
         "[development]": {
