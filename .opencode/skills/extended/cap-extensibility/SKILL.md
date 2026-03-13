@@ -76,15 +76,17 @@ Configure a test extension tenant and mock `bob` (ExtensionDeveloper) in `packag
 {
   "cds": {
     "requires": {
-      "[development]": {
-        "kind": "mocked",
-        "users": {
-          "yves": { "roles": ["cds.Subscriber"] },
-          "bob": {
-            "tenant": "t1-ext",
-            "roles": ["cds.ExtensionDeveloper"]
-          },
-          "carol": { "tenant": "t1" }
+      "auth": {
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "yves": { "roles": ["cds.Subscriber"] },
+            "bob": {
+              "tenant": "t1-ext",
+              "roles": ["cds.ExtensionDeveloper"]
+            },
+            "carol": { "tenant": "t1" }
+          }
         }
       }
     }
