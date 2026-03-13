@@ -190,13 +190,28 @@ public class AdminServiceHandler implements EventHandler {
 - `@After`: result post-processing; receives result rows directly
 
 ## Maven Setup
+
 ```xml
-<!-- pom.xml: CAP Java SDK -->
+<!-- pom.xml: CAP Java — Spring Boot integration + OData V4 adapter -->
 <dependency>
   <groupId>com.sap.cds</groupId>
-  <artifactId>cds-starter-spring-boot</artifactId>
+  <artifactId>cds-framework-spring-boot</artifactId>
+  <scope>runtime</scope>
+</dependency>
+<dependency>
+  <groupId>com.sap.cds</groupId>
+  <artifactId>cds-adapter-odata-v4</artifactId>
+  <scope>runtime</scope>
+</dependency>
+
+<!-- Or use the all-in-one starter (includes both above) -->
+<dependency>
+  <groupId>com.sap.cds</groupId>
+  <artifactId>cds-starter-spring-boot-odata</artifactId>
 </dependency>
 ```
+
+See the `cap-project-setup` skill for the full recommended `pom.xml` dependency set.
 
 Run the app locally:
 ```sh

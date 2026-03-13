@@ -215,7 +215,9 @@ extend Books {
 
 ## Extension i18n
 
-Place `i18n/i18n.properties` in the extension project root. Keys here override base app translations:
+Place `i18n/i18n.properties` in the extension project root. Keys here override base app translations.
+
+> Note: extension projects use `i18n/` (no underscore) at the project root, not `_i18n/`. The `_i18n/` convention (with underscore) is used for base app CDS source directories — see the `cap-i18n` skill for details.
 
 ```properties
 # i18n/i18n.properties

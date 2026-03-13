@@ -262,4 +262,4 @@ npm test
 | Authenticated | `{ auth: { username: 'alice', password: '' } }` |
 | Assert subset | `expect(obj).to.containSubset({...})` |
 | Assert rejection | `await expect(GET(...)).to.be.rejectedWith(/pattern/)` |
-| Capture logs | `cds.test.log()` |
+| Capture logs | `test.log()` (where `test = cds.test(...)`) |
