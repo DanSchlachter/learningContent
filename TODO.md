@@ -57,6 +57,18 @@
 - [x] Verified: `npx cds deploy --to sqlite` loads all data cleanly
 - [x] **Commit**: `feat: seed data — categories, tags, content items, learning paths, and admin users`
 
+## Phase 6: Testing & Bug Fixes
+
+- [x] `changeStatus` bound action — tested, works
+- [x] `duplicate` bound action — fixed bad `cds` destructure (`const { cds: { utils } }` → `cds.utils.uuid()`); tested, works
+- [x] `bulkPublish` — tested, returns count of updated rows
+- [x] `bulkArchive` — tested, returns count of updated rows
+- [x] `bulkDelete` (soft delete) — tested: `isDeleted=true`, hidden from BrowseService, visible in AdminService
+- [x] `bulkRecategorize` — tested, updates `category_ID` on all selected items
+- [x] `searchContent` — fixed `tagId` filter: replaced raw SQL subquery referencing non-existent table name with CQL `exists tags[tag_ID = '...']` path predicate; all filter combos tested (q, contentType, categoryId, tagId)
+- [x] **Commit**: `fix: remove bad cds destructure in duplicate action`
+- [x] **Commit**: `fix: use CQL exists path predicate for tagId filter in searchContent`
+
 ---
 
 ## How to Run
