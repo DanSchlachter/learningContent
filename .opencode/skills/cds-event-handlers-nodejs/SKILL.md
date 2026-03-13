@@ -27,6 +27,7 @@ Guide you in implementing CAP Node.js service handlers, covering:
 
 - ALWAYS check `cds-mcp_search_model` for service/entity definitions before writing handlers.
 - ALWAYS verify API usage with `cds-mcp_search_docs` before using unfamiliar CAP Node.js APIs.
+- **Prefer declarative CDS over custom handler code.** Before writing a handler for validation or constraints, check whether the requirement can be covered by model annotations: `@mandatory`, `@assert.range`, `@assert.format`, `@assert.unique`, `@assert.target`, or `@assert` expressions. Only write a handler when the logic genuinely cannot be expressed in CDS.
 - Handler files must be co-located with the service CDS file and share the same base name (e.g., `cat-service.js` for `cat-service.cds`).
 - Prefer the class-based `cds.ApplicationService` pattern for new services; function-based exports are also supported.
 - Use `req.reject(status, message)` to return HTTP errors to the client; use `req.error()` to accumulate multiple validation errors.
@@ -47,6 +48,7 @@ module.exports = class CatalogService extends cds.ApplicationService {
     const { Books } = this.entities
 
     // Validate before update
+    // NOTE: prefer @assert.range / @mandatory in CDS over imperative checks like this
     this.before('UPDATE', Books, req => {
       if (req.data.stock < 0) req.reject(400, 'Stock cannot be negative')
     })
@@ -74,6 +76,7 @@ module.exports = async function (srv) {
   const { Books } = srv.entities
 
   srv.before('CREATE', Books, req => {
+    // NOTE: prefer @mandatory in CDS over this kind of check
     if (!req.data.title) req.reject(400, 'Title is required')
   })
 

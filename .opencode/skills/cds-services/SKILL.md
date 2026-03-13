@@ -25,6 +25,7 @@ Guide you in defining CDS services for SAP CAP applications, covering:
 
 - ALWAYS search for existing service definitions with `cds-mcp_search_model` before making changes.
 - ALWAYS check `cds-mcp_search_docs` before adding new service features or annotations.
+- **Prefer declarative CDS annotations over custom handler code.** Input validation (`@mandatory`, `@assert.range`, `@assert.format`, `@assert.unique`, `@assert.target`, `@assert` expressions) should be expressed in CDS — not reimplemented in handlers. Use a separate `srv/<name>-constraints.cds` file to keep constraint annotations away from the service definition.
 - Keep service files in `srv/`; import domain models from `db/schema.cds` via `using`.
 - Services should be use-case-oriented facades over domain models — avoid exposing the domain model directly.
 - Prefer `as projection on` over `as select from` for simple exposures; use `as select from` only when you need SQL-style expressions.

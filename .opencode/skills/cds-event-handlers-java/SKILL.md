@@ -26,6 +26,7 @@ Guide you in implementing CAP Java service event handlers, covering:
 
 - ALWAYS check `cds-mcp_search_model` for entity/service definitions before writing handlers.
 - ALWAYS verify Java API usage with `cds-mcp_search_docs` before using CAP Java SDK classes.
+- **Prefer declarative CDS over custom handler code.** Before writing a `@Before` handler for validation, check whether the requirement can be covered by model annotations: `@mandatory`, `@assert.range`, `@assert.format`, `@assert.unique`, `@assert.target`, or `@assert` expressions. Only write a handler when the logic genuinely cannot be expressed in CDS.
 - Handler classes MUST be annotated with `@Component` and implement `EventHandler`.
 - Use `@ServiceName("MyService")` to bind a handler class to a specific service; override at method level when needed.
 - Use `@Before` for validation, `@On` for core business logic, `@After` for result post-processing.

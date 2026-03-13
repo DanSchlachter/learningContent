@@ -21,6 +21,7 @@ Guide you in writing correct CDS (Core Data Services) models for SAP CAP applica
 - Reuse types and aspects from `@sap/cds/common` (`cuid`, `managed`, `CodeList`, `Currency`, `Country`)
 - Annotations: `@title`, `@description`, `localized`, `@readonly`, `@insertonly`
 - `extend` to add fields or aspects to existing entities
+- **Declarative validation**: `@mandatory`, `@assert.range`, `@assert.format`, `@assert.unique`, `@assert.target`, `@assert` expressions, `not null`
 
 ## Rules
 
@@ -35,6 +36,7 @@ Guide you in writing correct CDS (Core Data Services) models for SAP CAP applica
 - Use `localized` keyword for multi-language text fields.
 - Group related entities with a shared `namespace` or `context`.
 - Use `extend` instead of modifying imported or shared base models.
+- **Prefer declarative validation annotations over custom handler code** — use `@mandatory`, `@assert.range`, `@assert.format`, `@assert.unique`, `@assert.target`, and `@assert` expressions whenever the constraint can be expressed in CDS. Only fall back to custom handlers for logic that cannot be expressed declaratively.
 
 ## Common Patterns
 
@@ -109,6 +111,79 @@ entity Products : cuid, managed {
   name     : localized String(111);
   currency : Currency;   // Association to sap.common.Currencies
   country  : Country;    // Association to sap.common.Countries
+}
+```
+
+## Declarative Validation (prefer over custom handler code)
+
+CAP enforces these annotations automatically — no handler code needed.
+
+### @mandatory — required field
+```cds
+entity Books : cuid {
+  title  : String @mandatory;   // rejected if null/empty on CREATE/UPDATE
+  stock  : Integer not null;    // DB-level NOT NULL constraint
+}
+```
+
+### @assert.range — numeric, date, or enum range
+```cds
+entity Products : cuid {
+  price    : Decimal   @assert.range: [0.01, _];          // > 0
+  stock    : Integer   @assert.range: [(0), _];           // strictly positive
+  priority : String    @assert.range enum { high; medium; low; };
+  validTo  : DateTime  @assert.range: ['2024-01-01', '2099-12-31'];
+}
+```
+
+### @assert.format — regex pattern
+```cds
+entity Contacts : cuid {
+  @assert.format: '/^\S+@\S+\.\S+$/'
+  @assert.format.message: 'Provide a valid email address'
+  email : String;
+}
+```
+
+### @assert.unique — uniqueness constraint
+```cds
+// Single field
+annotate Books with @assert.unique: { isbn: [ isbn ] };
+
+// Composite uniqueness
+annotate OrderItems with @assert.unique.product: [ order, product ];
+```
+
+### @assert.target — referential integrity at service level
+```cds
+entity Books : cuid {
+  author : Association to Authors @assert.target;  // author must exist on CREATE/UPDATE
+}
+```
+
+### @assert expression — cross-field and complex rules
+Use in separate annotation files (e.g. `srv/admin-constraints.cds`) to keep service definitions clean:
+```cds
+using { AdminService } from './admin-service';
+annotate AdminService.Books with {
+
+  title @mandatory;
+
+  author @assert: (case
+    when not exists author then 'Specified Author does not exist'
+  end);
+
+  price @assert.range: [1, 111];
+  stock @assert.range: [(0), _];
+}
+
+// Cross-field validation
+annotate TravelService.Travels with {
+  BeginDate @mandatory @assert: (case
+    when BeginDate > EndDate then 'Begin date must be before end date'
+    when exists Bookings[Flight.date < Travel.BeginDate]
+      then 'All bookings must be within the travel period'
+  end);
 }
 ```
 
