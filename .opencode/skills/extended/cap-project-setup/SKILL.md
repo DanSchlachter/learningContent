@@ -277,6 +277,12 @@ Minimal set for a Spring Boot + OData V4 CAP Java app:
     <artifactId>spring-boot-starter-web</artifactId>
   </dependency>
 
+  <!-- Spring Boot JDBC (required for CAP database integration) -->
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jdbc</artifactId>
+  </dependency>
+
   <!-- CAP Java: Spring Boot integration -->
   <dependency>
     <groupId>com.sap.cds</groupId>

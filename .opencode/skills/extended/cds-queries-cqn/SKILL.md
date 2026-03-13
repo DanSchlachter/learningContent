@@ -124,6 +124,21 @@ await UPDATE('Books').where({ stock: { '<': 5 } }).with({ stock: 5 })
 await DELETE.from('Books').where({ ID: 201 })
 ```
 
+### UPSERT (update-or-insert, PATCH semantics)
+
+```javascript
+// Single entry — all key fields must be supplied
+await UPSERT.into('db.Books').entries({ ID: 4711, title: 'Wuthering Heights', stock: 100 })
+
+// Bulk
+await UPSERT.into('db.Books').entries([
+  { ID: 4711, title: 'Wuthering Heights', stock: 100 },
+  { ID: 4712, title: 'Jane Eyre', stock: 50 }
+])
+```
+
+> **UPSERT limitations:** no UUID auto-generation, no `@cds.on.insert` handling, no generic CAP event handlers (e.g. audit logging), all key fields must be provided in every entry. Deep upserts and delta payloads are not supported in Node.js.
+
 ### Safe query mutation with `cds.ql.clone()`
 
 ```javascript
@@ -320,7 +335,7 @@ service.run(books);
 | Create | `INSERT.into(...)` | `Insert.into(...)` | `INSERT` |
 | Update | `UPDATE(...).with(...)` | `Update.entity(...)` | `UPDATE` |
 | Delete | `DELETE.from(...)` | `Delete.from(...)` | `DELETE` |
-| Upsert | — | `Upsert.into(...)` | `UPSERT` |
+| Upsert | `UPSERT.into(...)` | `Upsert.into(...)` | `UPSERT` |
 
 ## Node.js `cds.read` Shorthand
 

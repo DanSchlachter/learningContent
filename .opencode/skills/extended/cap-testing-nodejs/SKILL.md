@@ -198,7 +198,7 @@ try {
 ```javascript
 describe('logging', () => {
   const test = cds.test(__dirname + '/..')
-  let log = test.log()          // captures console output in scope
+  let log = cds.test.log()          // captures console output in scope
 
   it('emits a log on read', async () => {
     await GET('/browse/Books')
