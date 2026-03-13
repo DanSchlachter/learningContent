@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Content Management</title>
+  <style>
+    body {
+      font-family: "72", "72full", Arial, Helvetica, sans-serif;
+      background: #f5f6f7;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card-container {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      padding: 2.5rem 3rem;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+      width: 240px;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .card h2 { margin: 0 0 0.5rem; font-size: 1.25rem; color: #0070f2; }
+    .card p  { margin: 0; font-size: 0.9rem; color: #556; }
+    h1 { text-align: center; color: #32363a; margin-bottom: 0.25rem; }
+    .subtitle { text-align: center; color: #6a6d70; margin: 0 0 2.5rem; }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Learning Content Management</h1>
+    <p class="subtitle">Select an application to get started</p>
+    <div class="card-container">
+      <a class="card" href="/browse/webapp/index.html">
+        <h2>Browse</h2>
+        <p>Discover and explore published learning content and paths</p>
+      </a>
+      <a class="card" href="/admin/webapp/index.html">
+        <h2>Admin</h2>
+        <p>Manage content items, categories, tags, and learning paths</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
