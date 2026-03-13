@@ -1,58 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Content Management</title>
-  <style>
-    body {
-      font-family: "72", "72full", Arial, Helvetica, sans-serif;
-      background: #f5f6f7;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .card-container {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      padding: 2.5rem 3rem;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      width: 240px;
-      transition: box-shadow 0.2s;
-    }
-    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
-    .card h2 { margin: 0 0 0.5rem; font-size: 1.25rem; color: #0070f2; }
-    .card p  { margin: 0; font-size: 0.9rem; color: #556; }
-    h1 { text-align: center; color: #32363a; margin-bottom: 0.25rem; }
-    .subtitle { text-align: center; color: #6a6d70; margin: 0 0 2.5rem; }
-  </style>
+  <script>
+    window["sap-ushell-config"] = {
+      defaultRenderer: "fiori2",
+      bootstrapPlugins: {
+        "RuntimeAuthoringPlugin": { component: "sap.ushell.plugins.rta", config: { validateAppVersion: false } }
+      },
+      renderers: {
+        fiori2: {
+          componentData: {
+            config: {
+              search: "hidden",
+              enablePersonalization: false,
+              enableRecentActivity: false
+            }
+          }
+        }
+      },
+      services: {
+        NavTargetResolution: {
+          config: {
+            runStandaloneAppFolderWhitelist: { "*": true },
+            allowTestUrlParameter: true
+          }
+        },
+        LaunchPage: {
+          adapter: { config: {
+            groups: [{
+              id: "learning_content",
+              title: "Learning Content",
+              tiles: [
+                {
+                  id: "browse-tile",
+                  title: "Browse Content",
+                  size: "1x1",
+                  tileType: "sap.ushell.ui.tile.StaticTile",
+                  properties: {
+                    title: "Browse Content",
+                    subtitle: "Discover published learning items",
+                    icon: "sap-icon://learning-assistant",
+                    targetURL: "#LearningContent-browse"
+                  }
+                },
+                {
+                  id: "admin-tile",
+                  title: "Manage Content",
+                  size: "1x1",
+                  tileType: "sap.ushell.ui.tile.StaticTile",
+                  properties: {
+                    title: "Manage Content",
+                    subtitle: "Admin: content, categories, tags",
+                    icon: "sap-icon://business-objects-experience",
+                    targetURL: "#LearningContent-admin"
+                  }
+                }
+              ]
+            }]
+          }}
+        },
+        ClientSideTargetResolution: {
+          adapter: { config: {
+            inbounds: {
+              "learning-content-browse": {
+                semanticObject: "LearningContent",
+                action: "browse",
+                title: "Browse Content",
+                resolutionResult: {
+                  applicationType: "SAPUI5",
+                  additionalInformation: "SAPUI5.Component=learning.content.browse",
+                  url: "/browse/webapp"
+                },
+                signature: { parameters: {}, additionalParameters: "allowed" }
+              },
+              "learning-content-admin": {
+                semanticObject: "LearningContent",
+                action: "admin",
+                title: "Manage Content",
+                resolutionResult: {
+                  applicationType: "SAPUI5",
+                  additionalInformation: "SAPUI5.Component=learning.content.admin",
+                  url: "/admin/webapp"
+                },
+                signature: { parameters: {}, additionalParameters: "allowed" }
+              }
+            }
+          }}
+        }
+      }
+    };
+  </script>
+  <script id="sap-ui-bootstrap"
+    src="https://ui5.sap.com/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_horizon"
+    data-sap-ui-compatVersion="edge"
+    data-sap-ui-async="true"
+    data-sap-ui-frameOptions="allow"
+    data-sap-ui-resourceroots='{
+      "learning.content.browse": "/browse/webapp/",
+      "learning.content.admin": "/admin/webapp/"
+    }'
+    data-sap-ui-oninit="module:sap/ushell/bootstrap/sandbox">
+  </script>
 </head>
-<body>
-  <div>
-    <h1>Learning Content Management</h1>
-    <p class="subtitle">Select an application to get started</p>
-    <div class="card-container">
-      <a class="card" href="/browse/webapp/index.html">
-        <h2>Browse</h2>
-        <p>Discover and explore published learning content and paths</p>
-      </a>
-      <a class="card" href="/admin/webapp/index.html">
-        <h2>Admin</h2>
-        <p>Manage content items, categories, tags, and learning paths</p>
-      </a>
-    </div>
-  </div>
-</body>
+<body class="sapUiBody" id="content"></body>
 </html>
