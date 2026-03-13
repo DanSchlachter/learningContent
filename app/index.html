@@ -4,106 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learning Content Management</title>
-  <script>
-    window["sap-ushell-config"] = {
-      defaultRenderer: "fiori2",
-      bootstrapPlugins: {
-        "RuntimeAuthoringPlugin": { component: "sap.ushell.plugins.rta", config: { validateAppVersion: false } }
-      },
-      renderers: {
-        fiori2: {
-          componentData: {
-            config: {
-              search: "hidden",
-              enablePersonalization: false,
-              enableRecentActivity: false
-            }
-          }
-        }
-      },
-      services: {
-        NavTargetResolution: {
-          config: {
-            runStandaloneAppFolderWhitelist: { "*": true },
-            allowTestUrlParameter: true
-          }
-        },
-        LaunchPage: {
-          adapter: { config: {
-            groups: [{
-              id: "learning_content",
-              title: "Learning Content",
-              tiles: [
-                {
-                  id: "browse-tile",
-                  title: "Browse Content",
-                  size: "1x1",
-                  tileType: "sap.ushell.ui.tile.StaticTile",
-                  properties: {
-                    title: "Browse Content",
-                    subtitle: "Discover published learning items",
-                    icon: "sap-icon://learning-assistant",
-                    targetURL: "#LearningContent-browse"
-                  }
-                },
-                {
-                  id: "admin-tile",
-                  title: "Manage Content",
-                  size: "1x1",
-                  tileType: "sap.ushell.ui.tile.StaticTile",
-                  properties: {
-                    title: "Manage Content",
-                    subtitle: "Admin: content, categories, tags",
-                    icon: "sap-icon://business-objects-experience",
-                    targetURL: "#LearningContent-admin"
-                  }
-                }
-              ]
-            }]
-          }}
-        },
-        ClientSideTargetResolution: {
-          adapter: { config: {
-            inbounds: {
-              "learning-content-browse": {
-                semanticObject: "LearningContent",
-                action: "browse",
-                title: "Browse Content",
-                resolutionResult: {
-                  applicationType: "SAPUI5",
-                  additionalInformation: "SAPUI5.Component=learning.content.browse",
-                  url: "/browse/webapp"
-                },
-                signature: { parameters: {}, additionalParameters: "allowed" }
-              },
-              "learning-content-admin": {
-                semanticObject: "LearningContent",
-                action: "admin",
-                title: "Manage Content",
-                resolutionResult: {
-                  applicationType: "SAPUI5",
-                  additionalInformation: "SAPUI5.Component=learning.content.admin",
-                  url: "/admin/webapp"
-                },
-                signature: { parameters: {}, additionalParameters: "allowed" }
-              }
-            }
-          }}
-        }
-      }
-    };
-  </script>
   <script id="sap-ui-bootstrap"
     src="https://ui5.sap.com/resources/sap-ui-core.js"
     data-sap-ui-theme="sap_horizon"
     data-sap-ui-compatVersion="edge"
     data-sap-ui-async="true"
     data-sap-ui-frameOptions="allow"
-    data-sap-ui-resourceroots='{
-      "learning.content.browse": "/browse/webapp/",
-      "learning.content.admin": "/admin/webapp/"
-    }'
-    data-sap-ui-oninit="module:sap/ushell/bootstrap/sandbox">
+    data-sap-ui-libs="sap.m,sap.ui.core">
+  </script>
+  <script>
+    sap.ui.getCore().attachInit(function () {
+      sap.ui.require(["sap/m/Shell", "sap/m/App", "sap/m/Page", "sap/m/GenericTile", "sap/m/TileContent", "sap/m/ImageContent", "sap/m/FlexBox"], function (Shell, App, Page, GenericTile, TileContent, ImageContent, FlexBox) {
+
+        var browseTile = new GenericTile({
+          header: "Browse Content",
+          subheader: "Discover published learning items",
+          press: function () {
+            window.location.href = "/browse/webapp/index.html";
+          },
+          tileContent: [new TileContent({
+            content: new ImageContent({ src: "sap-icon://learning-assistant" })
+          })]
+        });
+
+        var adminTile = new GenericTile({
+          header: "Manage Content",
+          subheader: "Admin: content, categories, tags",
+          press: function () {
+            window.location.href = "/admin/webapp/index.html";
+          },
+          tileContent: [new TileContent({
+            content: new ImageContent({ src: "sap-icon://business-objects-experience" })
+          })]
+        });
+
+        var tileBox = new FlexBox({
+          wrap: "Wrap",
+          justifyContent: "Center",
+          items: [browseTile, adminTile]
+        }).addStyleClass("sapUiSmallMargin");
+
+        var page = new Page({
+          title: "Learning Content Management",
+          showHeader: true,
+          content: [tileBox]
+        });
+
+        new Shell({
+          app: new App({ pages: [page] })
+        }).placeAt("content");
+      });
+    });
   </script>
 </head>
 <body class="sapUiBody" id="content"></body>

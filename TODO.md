@@ -99,18 +99,31 @@
 
 - [x] Add `app/browse/webapp/index.html` + `Component.js` — UI5 bootstrap via `sap/fe/core/AppComponent`
 - [x] Add `app/admin/webapp/index.html` + `Component.js` — UI5 bootstrap via `sap/fe/core/AppComponent`
-- [x] Add `app/index.html` — custom landing page replacing the generic CAP welcome page at `localhost:4004`
+- [x] Add `app/index.html` — Fiori-styled `sap.m` tile launchpad replacing the generic CAP welcome page
+  - Uses `sap.m.GenericTile` + `sap.m.Shell` (public CDN only — no `sap.ushell` dependency)
   - Links to `/browse/webapp/index.html` and `/admin/webapp/index.html`
   - CAP serves any `app/**/*.html` statically; `app/index.html` is the root index
+- [x] Add `app/services.cds` — imports both `fiori-service.cds` files so annotations appear in `$metadata`
+- [x] Fix all 13 failing admin tests caused by `@odata.draft.enabled` requiring `IsActiveEntity` key
+  - Updated `key()` helper to `(ID=xxx,IsActiveEntity=true)` for active entity reads/actions
+  - `POST /ContentItems` creates a draft — added `draftActivate` call in create tests before asserting on active entity set
+- [x] **All 58 tests passing**
 - [x] **Commit**: `feat: add browse app webapp with UI5 bootstrap index.html and Component.js`
 - [x] **Commit**: `feat: add admin app webapp with UI5 bootstrap index.html and Component.js`
 - [x] **Commit**: `feat: add app/index.html landing page replacing CAP welcome page`
+- [x] **Commit**: `fix: use sap/ui/core/ComponentSupport pattern in webapp index.html files`
+- [x] **Commit**: `fix: move manifest.json into webapp/ so Component.js can resolve it`
+- [x] **Commit**: `fix: add app/services.cds to load fiori annotation files into CDS model`
+- [x] **Commit**: `fix: replace broken FLP sandbox with sap.m GenericTile launchpad`
+- [x] **Commit**: `fix: update admin tests for draft-enabled ContentItems (IsActiveEntity key)`
 
 ### Key notes
-- `app/index.html` replaces the generic CAP welcome page — confirmed by `node_modules/@sap/cds/app/index.html` footer: "You can replace it with a custom `./app/index.html`"
+- `app/index.html` replaces the generic CAP welcome page — uses `sap.m.GenericTile` with public CDN (no `sap.ushell` needed)
+- `sap/ushell/bootstrap/sandbox` is NOT available on the public CDN (`ui5.sap.com`) — returns 404
 - `app/<name>/webapp/index.html` bootstraps UI5 from `https://ui5.sap.com/resources/sap-ui-core.js` (CDN)
 - `data-sap-ui-resourceroots` maps the app namespace (e.g. `learning.content.browse`) to `./` so `Component.js` and `manifest.json` are found
 - `Component.js` extends `sap/fe/core/AppComponent` with `manifest: "json"` — loads `manifest.json` from same directory
+- `@odata.draft.enabled` changes OData key to `(ID=xxx,IsActiveEntity=true)` for active entities; POST creates a draft (IsActiveEntity=false) that requires `draftActivate` before it appears in the active entity set
 - Browse app: `http://localhost:4004/browse/webapp/index.html` (public, no auth)
 - Admin app: `http://localhost:4004/admin/webapp/index.html` (requires `alice`/`alice` or `bob`/`bob`)
 

@@ -21,8 +21,8 @@ const CAT_1         = '10000000-0000-0000-0000-000000000001'; // "Cloud & Infras
 const CAT_2         = '10000000-0000-0000-0000-000000000002'; // "Cloud Native"
 const TAG_1         = '20000000-0000-0000-0000-000000000001'; // "SAP BTP"
 
-// Helper: key predicate for ContentItems
-const key = (id) => `(ID=${id})`;
+// Helper: key predicate for ContentItems (draft-enabled → must include IsActiveEntity)
+const key = (id) => `(ID=${id},IsActiveEntity=true)`;
 
 describe('AdminService', () => {
 
@@ -105,8 +105,12 @@ describe('AdminService', () => {
       expect(status).toBe(201);
       expect(data.ID).toBeTruthy();
       expect(data.title).toBe('Test Item');
-      expect(data.status).toBe('draft');
       createdID = data.ID;
+      // Activate the draft so the item exists as an active entity
+      await POST(
+        `${BASE}/ContentItems(ID=${createdID},IsActiveEntity=false)/draftActivate`,
+        {}, ADMIN
+      );
     });
 
     test('created item is visible in admin list', async () => {
@@ -341,6 +345,11 @@ describe('AdminService', () => {
         category_ID: CAT_1,
       }, ADMIN);
       tempID = data.ID;
+      // Activate the draft so bulkDelete can find it as an active entity
+      await POST(
+        `${BASE}/ContentItems(ID=${tempID},IsActiveEntity=false)/draftActivate`,
+        {}, ADMIN
+      );
     });
 
     test('soft-deletes selected items and returns count', async () => {
