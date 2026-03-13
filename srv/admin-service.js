@@ -28,7 +28,6 @@ module.exports = class AdminService extends cds.ApplicationService {
       const original = await SELECT.one(ContentItems, ['*']).where({ ID });
       if (!original) return req.error(404, 'Content item not found');
 
-      const { cds: { utils: { uuid } } } = require('@sap/cds');
       const newID = cds.utils.uuid();
 
       const copy = {
