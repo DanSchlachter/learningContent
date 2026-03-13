@@ -10,13 +10,20 @@
     "express": "^4"
   },
   "devDependencies": {
+    "@cap-js/cds-test": "^0.4.1",
+    "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^8",
-    "@cap-js/sqlite": "^1"
+    "jest": "^30.3.0"
   },
   "scripts": {
     "start": "cds-serve",
     "watch": "cds watch",
-    "build": "cds build --production"
+    "build": "cds build --production",
+    "test": "jest --testTimeout=30000 --forceExit"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": ["**/test/**/*.test.js"]
   },
   "cds": {
     "requires": {
@@ -29,11 +36,15 @@
           "users": {
             "alice": {
               "password": "alice",
-              "roles": ["Admin"]
+              "roles": [
+                "Admin"
+              ]
             },
             "bob": {
               "password": "bob",
-              "roles": ["Admin"]
+              "roles": [
+                "Admin"
+              ]
             },
             "carol": {
               "password": "carol",
