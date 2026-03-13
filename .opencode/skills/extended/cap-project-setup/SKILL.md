@@ -5,12 +5,11 @@ compatibility:
   runtime: [nodejs, java]
 metadata:
   topics:
-    - project-setup
-    - cds-init
-    - cds-add
-    - typescript
-    - maven
-    - scaffolding
+    - scaffold a new CAP project with cds init
+    - add facets (sqlite, hana, xsuaa, approuter) using cds add
+    - configure Node.js runtime with cds watch for local development
+    - configure Java runtime with Maven and mvn spring-boot:run
+    - enable TypeScript support in a CAP Node.js project
 ---
 
 # CAP Project Setup & Scaffolding

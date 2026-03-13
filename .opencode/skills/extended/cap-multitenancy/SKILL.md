@@ -5,11 +5,11 @@ compatibility:
   runtime: [nodejs, java]
 metadata:
   topics:
-    - multitenancy
-    - mtxs
-    - sidecar
-    - tenant-lifecycle
-    - saas
+    - set up MTX sidecar with @sap/cds-mtxs for multitenancy
+    - implement tenant subscribe, upgrade, and unsubscribe lifecycle
+    - expose and consume cds.xt services (SaasProvisioningService, DeploymentService)
+    - configure sidecar as a separate Node.js app alongside the main app
+    - handle tenant-specific database deployment for Node.js and Java
 ---
 
 # CAP Multitenancy (MTX / `@sap/cds-mtxs`)

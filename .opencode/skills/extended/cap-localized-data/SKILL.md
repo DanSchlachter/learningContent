@@ -199,9 +199,9 @@ entity Books : cuid {
 
 ---
 
-## Transitive Localized Views (cds8+)
+## Transitive Localized Views (June 2024 / cds8)
 
-As of cds8, CAP no longer generates localized views for entities that only **reference**
+As of the June 2024 release (cds8), CAP no longer generates localized views for entities that only **reference**
 localized entities via associations (no own localized elements). This reduces DB objects:
 
 ```cds

@@ -142,7 +142,7 @@ production, and writing authenticated tests.
   "cds": {
     "requires": {
       "auth": {
-        "[production]": { "kind": "dummy" }
+        "[development]": { "kind": "dummy" }
       }
     }
   }

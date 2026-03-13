@@ -5,12 +5,11 @@ compatibility:
   runtime: [nodejs, java]
 metadata:
   topics:
-    - extensibility
-    - saas
-    - extensions
-    - cds-push
-    - cds-pull
-    - mtxs
+    - enable tenant extensibility in a SaaS CAP provider app
+    - develop extension projects with cds push and cds pull
+    - use extend keyword and @assert.integrity to add fields and associations
+    - configure ExtensionDeveloper role and extension allowlist
+    - set up mtxs sidecar for extensibility support
 ---
 
 # CAP SaaS Extensibility
