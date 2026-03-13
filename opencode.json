@@ -1,0 +1,40 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "AGENTS.md",
+    "specification.md",
+    "docs/cap-patterns.md",
+    "docs/fiori-patterns.md"
+  ],
+  "agent": {
+    "build": {
+      "mode": "primary",
+      "prompt": "{file:.opencode/prompts/build.txt}",
+      "temperature": 0.2,
+      "permission": {
+        "bash": {
+          "*": "allow",
+          "git push*": "ask",
+          "git reset --hard*": "ask",
+          "rm -rf*": "ask"
+        }
+      }
+    },
+    "plan": {
+      "mode": "primary",
+      "temperature": 0.1,
+      "permission": {
+        "edit": "ask",
+        "bash": {
+          "*": "ask",
+          "npx cds build*": "allow",
+          "npm test*": "allow",
+          "git status*": "allow",
+          "git diff*": "allow",
+          "git log*": "allow"
+        }
+      }
+    }
+  }
+}
+}
