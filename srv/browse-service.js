@@ -36,11 +36,8 @@ module.exports = class BrowseService extends cds.ApplicationService {
       }
 
       if (tagId) {
-        // Filter via the tags composition (items that have the specified tag)
-        query.where(`exists (
-          select 1 from learning_content_ContentItems_Tags t
-          where t.item_ID = ID and t.tag_ID = '${tagId.replace(/'/g, "''")}'
-        )`);
+        // Use CQL exists path predicate on the 'tags' composition
+        query.where(`exists tags[tag_ID = '${tagId.replace(/'/g, "''")}']`);
       }
 
       return cds.run(query);
