@@ -69,6 +69,32 @@
 - [x] **Commit**: `fix: remove bad cds destructure in duplicate action`
 - [x] **Commit**: `fix: use CQL exists path predicate for tagId filter in searchContent`
 
+## Phase 7: Jest Test Suite
+
+- [x] Install `@cap-js/cds-test` + jest; configure `package.json` with test script, jest config, setupFiles
+- [x] Add `test/setup.js` — sets `CDS_ENV=test` before tests run
+- [x] Configure `[test]` CDS profile in `package.json` at the `cds` level with `:memory:` SQLite DB
+- [x] `test/browse-service.test.js` — 20 tests, all passing:
+  - Authentication (unauthenticated 401, viewer gets 200)
+  - ContentItems read (published only, no draft/deleted, filter, orderby, expand)
+  - LearningPaths (published only)
+  - searchContent (q, contentType, categoryId, tagId)
+- [x] `test/admin-service.test.js` — 38 tests, all passing:
+  - Authentication (401, 403 for non-Admin, 200 for Admin)
+  - ContentItems read (all statuses/deleted visible to admin, filter, orderby)
+  - ContentItems create & soft-delete via bulkDelete
+  - Categories / Tags CRUD
+  - `changeStatus` bound action (draft→published→archived, invalid status 400)
+  - `duplicate` bound action (creates draft copy, visible in admin, hidden from browse)
+  - `bulkPublish`, `bulkArchive`, `bulkDelete`, `bulkRecategorize`
+  - LearningPaths + AdminUsers read
+- [x] **Total: 58 tests, all passing** (`npx jest --runInBand`)
+- [x] **Key learnings recorded**:
+  - `req.params[0]` is a plain UUID string for single-key entities (not `{ID: ...}`)
+  - Must use `cds.services.db.run(SELECT.one.from('fully.qualified.EntityName'))` for direct DB reads in bound action handlers — global `SELECT.one(serviceEntity)` tries to query a non-existent `ServiceName_EntityName` table
+  - `changeStatus` returns HTTP 200 with entity body (not 204) since it declares `returns ContentItems`
+- [x] **Commit**: `test: add admin-service tests — 58 tests passing`
+
 ---
 
 ## How to Run
