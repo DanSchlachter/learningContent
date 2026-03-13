@@ -349,21 +349,26 @@ Forward internal CDS tool requests to the MTX Sidecar without App Router authent
 | `POST /-/cds/deployment/upgrade` | Low-level upgrade (used by `cds upgrade` CLI) |
 | `GET /-/cds/model-provider/csn` | Fetch combined CSN served to tenants |
 
+For `cds.xt.ExtensibilityService` endpoints (`/-/cds/extensibility/…`), see the `cap-extensibility` skill.
+
 ---
 
 ## Mock Users for Local Testing
 
-In `package.json` (Node.js), configure mock users with tenant assignment:
+Configure mock users with tenant assignment in `package.json`. See the `cap-authentication` skill for the full mock user configuration reference.
 
 ```json
 {
   "cds": {
     "requires": {
       "auth": {
-        "users": {
-          "yves": { "roles": ["cds.Subscriber"] },
-          "bob": { "tenant": "t1-ext", "roles": ["cds.ExtensionDeveloper"] },
-          "carol": { "tenant": "t1" }
+        "[development]": {
+          "kind": "mocked",
+          "users": {
+            "yves": { "roles": ["cds.Subscriber"] },
+            "bob": { "tenant": "t1-ext", "roles": ["cds.ExtensionDeveloper"] },
+            "carol": { "tenant": "t1" }
+          }
         }
       }
     }
@@ -379,7 +384,8 @@ In `package.json` (Node.js), configure mock users with tenant assignment:
 |---|---|
 | `mtx-sidecar` | MTX-enabled with sidecar (Node.js or Java) |
 | `mtx` | MTX without sidecar (Node.js only, services in main app) |
-| `mtx-extension` | Extension project build (`extension.tgz`) for `cds push` |
+
+For the `mtx-extension` build task type (extension project → `extension.tgz`), see the `cap-extensibility` skill.
 
 ---
 

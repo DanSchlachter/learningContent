@@ -32,11 +32,12 @@ metadata:
    cds compile --to xsuaa
    ```
 
-4. **For new projects targeting HANA, disable native HANA associations** to speed up deploys:
-   ```json
-   // .cdsrc.json
-   { "sql": { "native_hana_associations": false } }
-   ```
+ 4. **For new projects targeting HANA, disable native HANA associations** to speed up deploys:
+    ```json
+    // .cdsrc.json
+    { "sql": { "native_hana_associations": false } }
+    ```
+    See the `cap-hana` skill for full details on HANA-specific configuration.
 
 5. **Node.js TypeScript: use `cds-ts watch` / `cds-ts serve`**, not `cds watch` / `cds serve`, so TypeScript is compiled automatically.
 

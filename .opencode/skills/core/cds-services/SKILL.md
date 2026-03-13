@@ -145,10 +145,5 @@ app/
 | `@cds.autoexpose` | Auto-expose entity when reached via association |
 
 ## OData HTTP Mapping
-| HTTP Verb | CAP Event |
-|---|---|
-| GET | READ |
-| POST | CREATE |
-| PATCH/PUT | UPDATE |
-| DELETE | DELETE |
-| POST (action) | custom action name |
+
+See the full HTTP verb → CAP event mapping table in the `cap-odata-protocol` skill.
