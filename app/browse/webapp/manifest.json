@@ -5,6 +5,19 @@
     "type": "application",
     "title": "Learning Content — Browse",
     "description": "Browse and discover published learning content",
+    "crossNavigation": {
+      "inbounds": {
+        "learning-content-browse": {
+          "semanticObject": "LearningContent",
+          "action": "browse",
+          "title": "Learning Content — Browse",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/browse/",

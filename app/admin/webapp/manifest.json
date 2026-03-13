@@ -5,6 +5,19 @@
     "type": "application",
     "title": "Learning Content — Admin",
     "description": "Manage learning content, taxonomy, and learning paths",
+    "crossNavigation": {
+      "inbounds": {
+        "learning-content-admin": {
+          "semanticObject": "LearningContent",
+          "action": "admin",
+          "title": "Learning Content — Admin",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    },
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/admin/",
