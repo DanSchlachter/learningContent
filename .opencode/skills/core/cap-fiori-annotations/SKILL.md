@@ -208,4 +208,4 @@ srv/
 | `@UI.Hidden` | Conditionally hide a field |
 | `@title` | Portable label (→ `@Common.Label`) |
 | `@description` | Tooltip/description (→ `@Core.Description`) |
-| `@hierarchy` | Enable recursive hierarchy/tree view (cds9+); replaces verbose `@Aggregation.RecursiveHierarchy` annotations — use `annotate Srv.Entity with @hierarchy;` on an entity with a self-referential `parent` association |
+| `@hierarchy` | Enable recursive hierarchy/tree view (December 2025+); replaces verbose `@Aggregation.RecursiveHierarchy` annotations — use `annotate Srv.Entity with @hierarchy;` on an entity with a self-referential `parent` association |

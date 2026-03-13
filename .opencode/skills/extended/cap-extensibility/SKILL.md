@@ -270,7 +270,9 @@ cds extend <url> --download-migrated-projects
 | Endpoint | Description |
 |---|---|
 | `GET /-/cds/extensibility/Extensions` | List active extensions for current tenant |
-| `POST /-/cds/extensibility/activate` | Activate/push extension bundle to tenant |
+| `PUT /-/cds/extensibility/Extensions/<id>` | Upload/update a draft extension bundle (set `"status": 1`) |
+| `POST /-/cds/extensibility/validate` | Validate a draft extension (`{ "ID": "<id>" }`) |
+| `POST /-/cds/extensibility/Extensions/activate` | Activate extension (`{ "ID": "<id>", "status": 2 }`) |
 | `DELETE /-/cds/extensibility/Extensions/<id>` | Remove an extension |
 
 ---
