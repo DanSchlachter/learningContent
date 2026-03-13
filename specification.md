@@ -122,7 +122,18 @@ There are no Viewer accounts — any person with the URL can access the public s
 
 ---
 
-## 5. Data Model (Logical)
+## 5. Technology Stack
+
+| Layer | Technology | Notes |
+|---|---|---|
+| **Runtime / Framework** | SAP Cloud Application Programming Model (CAP) — Node.js | Business logic, service definitions, and OData API are implemented using CDS (Core Data Services) and the CAP Node.js runtime. |
+| **Database** | SQLite | Used as the persistence layer via CAP's built-in SQLite adapter. Suitable for development and lightweight production scenarios; can be swapped for SAP HANA in a cloud deployment. |
+| **API Protocol** | OData V4 | CAP automatically exposes CDS service definitions as OData V4 endpoints, providing standardized querying, filtering, sorting, and pagination out of the box. |
+| **Frontend** | SAP Fiori elements | The Admin and Viewer UIs are built with SAP Fiori elements — a metadata-driven UI framework that generates responsive, accessible UIs from OData annotations. This satisfies the WCAG 2.1 AA and responsive design requirements with minimal custom frontend code. |
+
+---
+
+## 6. Data Model (Logical)
 
 ```
 AdminUser
@@ -150,7 +161,7 @@ LearningPath
 
 ---
 
-## 6. UI / UX Guidelines
+## 7. UI / UX Guidelines
 
 - **Admin interface**: dashboard-style layout with sidebar navigation; content list with filters and bulk-action toolbar; form-based entry editor
 - **Viewer interface**: clean, readable layout prioritizing content; prominent search bar; card-based content grids; breadcrumb navigation for categories; clear external-link affordance on all cards and detail pages
@@ -158,7 +169,7 @@ LearningPath
 
 ---
 
-## 7. Out of Scope (v1)
+## 8. Out of Scope (v1)
 
 The following features are explicitly deferred to future versions:
 
@@ -173,6 +184,6 @@ The following features are explicitly deferred to future versions:
 
 ---
 
-## 8. Open Questions
+## 9. Open Questions
 
 None.
