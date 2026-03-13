@@ -85,7 +85,21 @@ annotate BrowseService.ContentItems with {
   category @(
     Common: {
       Text:            category.name,
-      TextArrangement: #TextOnly
+      TextArrangement: #TextOnly,
+      ValueList: {
+        CollectionPath: 'Categories',
+        Parameters: [
+          {
+            $Type:             'Common.ValueListParameterInOut',
+            LocalDataProperty: category_ID,
+            ValueListProperty: 'ID'
+          },
+          {
+            $Type:             'Common.ValueListParameterDisplayOnly',
+            ValueListProperty: 'name'
+          }
+        ]
+      }
     }
   );
 };
