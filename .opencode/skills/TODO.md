@@ -103,13 +103,15 @@ All 13 extended skills are complete. Each entry describes the skill name (= dire
   - Mock tenants for local testing
   - HDI container per tenant on HANA
 
-- [x] **`cap-extensibility`** — SaaS extensibility and feature toggles
-  - `extend` keyword for adding fields/associations at model level
-  - Extension allowlists (`@cds.persistence.skip`, `@cds.autoexposed`)
-  - Feature toggles: `cds.features`, `[feature-flag]` profile blocks
-  - `cds.ExtensionDeveloper` role for tenant-level extensions
-  - `cds pull` / `cds push` for extension lifecycle
-  - Feature-toggled entities and annotations
+- [x] **`cap-extensibility`** — Tenant-specific SaaS extensibility with `cds push`/`cds pull`
+  - Enabling extensibility in a SaaS provider app (`@cds.autoexposed`, `@open`)
+  - Extension project layout and `package.json` `"extends"` configuration
+  - `cds pull` to download base model, `cds push` to deploy extensions
+  - `cds.ExtensionDeveloper` role and mock user `bob` for local testing
+  - CDS `extend` syntax for entities, services, and annotations
+  - Extension lifecycle: local dev, test-drive, and production push
+  - Extension i18n and annotation overrides
+  - Build task type `mtx-extension`
 
 - [x] **`cap-project-setup`** — CAP project initialization and structure
   - `cds init <name>` — scaffold a new project
