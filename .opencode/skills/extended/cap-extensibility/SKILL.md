@@ -2,15 +2,23 @@
 name: cap-extensibility
 description: SAP CAP SaaS extensibility - tenant extensions with cds push/pull, ExtensionDeveloper role, extend keyword, extension project setup
 compatibility:
-  runtime: ["nodejs", "java"]
+  runtime: [nodejs, java]
 metadata:
-  tier: extended
-  topics: ["extensibility", "saas", "extensions", "cds-push", "cds-pull", "mtxs"]
+  topics:
+    - extensibility
+    - saas
+    - extensions
+    - cds-push
+    - cds-pull
+    - mtxs
 ---
 
 # CAP SaaS Extensibility
 
 ## What This Skill Covers
+
+This skill covers enabling tenant-specific extensibility in a CAP SaaS provider app and developing extension projects using `cds push`/`cds pull`.
+
 - Enabling extensibility in a SaaS provider app
 - Extension project layout and `package.json` configuration
 - Pulling the base model with `cds pull` and pushing extensions with `cds push`
@@ -68,7 +76,8 @@ Configure a test extension tenant and mock `bob` (ExtensionDeveloper) in `packag
 {
   "cds": {
     "requires": {
-      "auth": {
+      "[development]": {
+        "kind": "mocked",
         "users": {
           "yves": { "roles": ["cds.Subscriber"] },
           "bob": {

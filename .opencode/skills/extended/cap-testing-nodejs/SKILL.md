@@ -14,7 +14,7 @@ metadata:
     - mocked authentication in tests
     - chai expect / assert / should
     - chai-subset / chai-as-promised
-    - cds.test.log() capture
+    - test.log() capture
     - Jest vs Mocha
     - best practices (assert data before status)
 ---

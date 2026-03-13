@@ -321,9 +321,9 @@ await srv.send({
 ```http
 # Nested expand with filter and selection
 GET /OrdersService/Orders?$expand=header($expand=items($select=ID,quantity))
-
-# Max expand depth configuration
 ```
+
+Max expand depth configuration:
 
 ```json
 {

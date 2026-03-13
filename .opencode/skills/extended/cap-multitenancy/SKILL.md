@@ -2,15 +2,22 @@
 name: cap-multitenancy
 description: SAP CAP multitenancy with MTX sidecar - tenant lifecycle (subscribe/upgrade/unsubscribe), cds.xt services, sidecar setup, Java & Node.js patterns
 compatibility:
-  runtime: ["nodejs", "java"]
+  runtime: [nodejs, java]
 metadata:
-  tier: extended
-  topics: ["multitenancy", "mtxs", "sidecar", "tenant-lifecycle", "saas"]
+  topics:
+    - multitenancy
+    - mtxs
+    - sidecar
+    - tenant-lifecycle
+    - saas
 ---
 
 # CAP Multitenancy (MTX / `@sap/cds-mtxs`)
 
 ## What This Skill Covers
+
+This skill covers building multitenant SaaS applications with the `@sap/cds-mtxs` sidecar in CAP Node.js and Java projects.
+
 - Enabling multitenancy in Node.js and Java CAP projects
 - MTX Sidecar architecture and service configuration
 - Tenant lifecycle: subscribe, upgrade, unsubscribe

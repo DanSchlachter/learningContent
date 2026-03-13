@@ -2,15 +2,23 @@
 name: cap-project-setup
 description: SAP CAP project scaffolding - cds init, cds add facets, Node.js vs Java, TypeScript, local dev with cds watch / mvn spring-boot:run, project layout
 compatibility:
-  runtime: ["nodejs", "java"]
+  runtime: [nodejs, java]
 metadata:
-  tier: extended
-  topics: ["project-setup", "cds-init", "cds-add", "typescript", "maven", "scaffolding"]
+  topics:
+    - project-setup
+    - cds-init
+    - cds-add
+    - typescript
+    - maven
+    - scaffolding
 ---
 
 # CAP Project Setup & Scaffolding
 
 ## What This Skill Covers
+
+This skill covers scaffolding and configuring new CAP projects for both Node.js and Java runtimes using `cds init` and `cds add`.
+
 - Creating a new CAP project with `cds init` (Node.js and Java)
 - Adding features/facets with `cds add`
 - Standard project layout (`app/`, `srv/`, `db/`)
@@ -32,7 +40,7 @@ metadata:
    cds compile --to xsuaa
    ```
 
- 4. **For new projects targeting HANA, disable native HANA associations** to speed up deploys:
+4. **For new projects targeting HANA, disable native HANA associations** to speed up deploys:
     ```json
     // .cdsrc.json
     { "sql": { "native_hana_associations": false } }
