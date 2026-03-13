@@ -113,7 +113,7 @@ There are no Viewer accounts — any person with the URL can access the public s
 
 | Concern | Requirement |
 |---|---|
-| **Authentication** | Admin interface requires authentication. Exact mechanism (username/password, SSO, etc.) to be determined by the framework. The viewer-facing site is unauthenticated and publicly accessible. |
+| **Authentication** | Admin interface requires authentication. For v1, CAP's built-in mock authentication is used for local development. No external Identity Provider is required. The viewer-facing site is unauthenticated and publicly accessible. |
 | **Authorization** | All write endpoints and the admin interface are protected server-side; unauthenticated requests must be rejected. |
 | **Performance** | Content list pages load in under 2 seconds for up to 10,000 entries |
 | **Accessibility** | WCAG 2.1 Level AA compliance |
@@ -127,9 +127,22 @@ There are no Viewer accounts — any person with the URL can access the public s
 | Layer | Technology | Notes |
 |---|---|---|
 | **Runtime / Framework** | SAP Cloud Application Programming Model (CAP) — Node.js | Business logic, service definitions, and OData API are implemented using CDS (Core Data Services) and the CAP Node.js runtime. |
-| **Database** | SQLite | Used as the persistence layer via CAP's built-in SQLite adapter. Suitable for development and lightweight production scenarios; can be swapped for SAP HANA in a cloud deployment. |
+| **Database** | SQLite | Used as the persistence layer via CAP's built-in SQLite adapter. The application runs locally; no cloud database is planned for v1. |
 | **API Protocol** | OData V4 | CAP automatically exposes CDS service definitions as OData V4 endpoints, providing standardized querying, filtering, sorting, and pagination out of the box. |
 | **Frontend** | SAP Fiori elements | The Admin and Viewer UIs are built with SAP Fiori elements — a metadata-driven UI framework that generates responsive, accessible UIs from OData annotations. This satisfies the WCAG 2.1 AA and responsive design requirements with minimal custom frontend code. |
+| **Authentication** | CAP built-in mock auth | Mock authentication is used for local development. No external Identity Provider (IAS, Azure AD, etc.) is required for v1. |
+| **Deployment** | Local only | The application runs locally using `cds watch` with SQLite. No cloud deployment (BTP, HANA) is planned for v1. |
+
+### 5.1 Application Architecture
+
+The frontend consists of **two separate Fiori elements applications**:
+
+| App | Route | Purpose |
+|---|---|---|
+| **Admin App** | `/admin/` | Content management, taxonomy management, learning path authoring, and user management. Requires authentication. |
+| **Browse App** | `/browse/` | Public-facing viewer experience for browsing, searching, and navigating to learning content. No authentication required. |
+
+Each app is backed by its own CDS service definition, ensuring a clean separation of concerns between admin write operations and public read-only access.
 
 ---
 
